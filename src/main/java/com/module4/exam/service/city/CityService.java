@@ -13,6 +13,11 @@ public class CityService implements ICityService {
     private ICityRepository cityRepository;
 
     @Override
+    public Iterable<City> showAll() {
+        return cityRepository.findAll();
+    }
+
+    @Override
     public Page<City> showAll(Pageable pageable) {
         return cityRepository.findAll(pageable);
     }

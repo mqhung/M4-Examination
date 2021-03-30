@@ -13,6 +13,11 @@ public class NationService implements INationService{
     private INationRepository nationRepository;
 
     @Override
+    public Iterable<Nation> showAll() {
+        return nationRepository.findAll();
+    }
+
+    @Override
     public Page<Nation> showAll(Pageable pageable) {
         return nationRepository.findAll(pageable);
     }

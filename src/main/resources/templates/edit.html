@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>Modify City</h3>
+<p>
+    <a th:href="@{/}">
+        Back To List
+    </a>
+</p>
+<div id="form">
+    <form  th:object="${city}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Area</label>
+            <input type="email" th:field="*{area}"/>
+        </div>
+        <div>
+            <label>Population</label>
+            <input type="email" th:field="*{population}"/>
+        </div>
+        <div>
+            <label>GDP</label>
+            <input type="email" th:field="*{gdp}"/>
+        </div>
+        <div>
+            <label>Description</label>
+            <input type="text" th:field="*{description}"/>
+        </div>
+        <div>
+            <label>Nation</label>
+            <select th:field="*{nation}">
+                <option th:each="n :${listNation}" th:value="${n.id}" th:text="${n.name}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Modify">
+    </form>
+</div>
+</body>
+</html>

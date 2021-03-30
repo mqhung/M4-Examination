@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+</head>
+<body>
+<h3>Danh sách thành phố</h3>
+<p>
+    <a th:href="@{/city/create}">
+        Add new city
+    </a>
+</p>
+<table id = "cities">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>City</th>
+        <th>Nation</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="city : ${listCity}">
+        <td th:text="${city.id}"></td>
+        <td> <a href="/city/detail" th:text="${city.name}"></a></td>
+        <td th:text="${city.nation.name}"></td>
+        <td><a th:href="@{/city/edit(id=${city.getId()})}">Edit</a></td>
+        <td><a onclick ="return confirm('Bạn có chắc chắn muốn xóa không?')" th:href="@{/city/delete(id=${city.getId()})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<!--phan trang-->
+<div>
+    <a th:href="@{'/city'(page=${listCity.number - 1})}" th:if="${listCity.hasPrevious()}">Previous</a>
+    <span th:text="${listCity.number + 1}"></span>/<span th:text="${listCity.totalPages}"></span>
+    <a th:href="@{'/city'(page=${listCity.number + 1})}" th:if="${listCity.hasNext()}">Next</a>
+</div>
+</body>
+</html>

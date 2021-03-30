@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 
 
 public interface IService<T>{
+    Iterable<T> showAll();
     Page<T> showAll(Pageable pageable);
     T findById(Long id);
     T save(T t);
