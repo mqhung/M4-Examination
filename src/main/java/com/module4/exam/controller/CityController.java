@@ -83,7 +83,9 @@ public class CityController {
         }
         city.setId(id);
         cityService.save(city);
-        return new ModelAndView("redirect:/city");
+        ModelAndView modelAndView = new ModelAndView("redirect:/city");
+        modelAndView.addObject("mess", "Sửa thành công");
+        return modelAndView;
     }
 
     //delete
