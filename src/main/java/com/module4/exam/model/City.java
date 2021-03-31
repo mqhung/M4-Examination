@@ -10,7 +10,7 @@ public class City {
     private Long id;
 
     @NotEmpty
-    @Size(max = 10, message = "Name must be less than 10 characters")
+    @Size(max = 20, message = "Name must be less than 20 characters")
     private String name;
 
 
