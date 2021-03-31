@@ -17,14 +17,10 @@
     <p th:text="'Description: '+ ${city.description}"></p>
 </div>
 <div>
-    <form action="/city/edit" method="post">
-        <input type="submit" value="Edit">
-    </form>
+    <a th:href="@{/city/edit(id=${city.getId()})}">Edit City</a>
 </div>
 <div>
-    <form action="/city/delete" method="post">
-        <input type="submit" value="Delete">
-    </form>
+    <a onclick ="return confirm('Bạn có chắc chắn muốn xóa không?')" th:href="@{/city/delete(id=${city.getId()})}">Delete</a>
 </div>
 </body>
 </html>

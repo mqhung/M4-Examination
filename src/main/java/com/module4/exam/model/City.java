@@ -1,6 +1,7 @@
 package com.module4.exam.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 public class City {
@@ -8,10 +9,21 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
+    @Size(max = 10, message = "Name must be less than 10 characters")
     private String name;
+
+
+    @Min(value = 0, message = "This number must be positive")
     private Long area;
+
+    @Min(value = 0, message = "This number must be positive")
     private Long population;
+
+    @Min(value = 0, message = "This number must be positive")
     private Long gdp;
+
+    @NotEmpty
     private String description;
 
     @ManyToOne

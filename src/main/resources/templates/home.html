@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-</head>
+<head th:replace="/layout :: head">
 <body>
 <h3>Danh sách thành phố</h3>
 <p>
@@ -8,7 +8,7 @@
         Add new city
     </a>
 </p>
-<table id = "cities">
+<table id = "products">
     <thead>
     <tr>
         <th>#</th>
@@ -34,5 +34,6 @@
     <span th:text="${listCity.number + 1}"></span>/<span th:text="${listCity.totalPages}"></span>
     <a th:href="@{'/city'(page=${listCity.number + 1})}" th:if="${listCity.hasNext()}">Next</a>
 </div>
+<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>

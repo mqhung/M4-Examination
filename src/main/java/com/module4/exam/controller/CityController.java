@@ -9,8 +9,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/city")
@@ -50,9 +54,14 @@ public class CityController {
         return modelAndView;
     }
     @PostMapping("/create")
-    public ModelAndView createCity(@ModelAttribute City city){
-        cityService.save(city);
-        return new ModelAndView("redirect:/city");
+    public ModelAndView createCity(@Validated @ModelAttribute City city, BindingResult bindingResult){
+        if(bindingResult.hasFieldErrors()){
+            return new ModelAndView("/create", "city", city);
+        } else {
+            cityService.save(city);
+            return new ModelAndView("redirect:/city");
+        }
+
     }
     //edit
     @GetMapping("/edit")

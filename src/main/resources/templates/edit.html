@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
 <body>
 <h3>Modify City</h3>
 <p>
-    <a th:href="@{/}">
+    <a th:href="@{/city}">
         Back To List
     </a>
 </p>
@@ -40,5 +41,6 @@
         <input type="submit" value="Modify">
     </form>
 </div>
+<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
